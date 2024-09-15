@@ -1,9 +1,12 @@
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function SignUp() {
   return (
-    <div>SignUp</div>
+    <div>
+      <Link to={'/login'}>Login</Link>
+    </div>
   )
 }
 
