@@ -1,8 +1,9 @@
 
-import { Button, Card, Checkbox, Form, Input, Typography } from 'antd'
+import { Button, Card, Checkbox, Form, Input, Space, Typography } from 'antd'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-const { Title, Paragraph } = Typography
+import SocialLogin from './components/SocialLogin'
+const { Title, Paragraph , Text} = Typography
 
 const Login = () => {
   const [form] = Form.useForm()
@@ -12,11 +13,13 @@ const Login = () => {
     console.log('Received values of form: ', value)
   }
   return (
-    <div>
-      <Card>
+    <>
+      <Card style={{
+        width: '50%',
+      }}>
         <div className='text-center'>
-          <Title>Log in to your account</Title>
-          <Paragraph>Please enter your email and password to sign in.</Paragraph>
+          <Title level={2}>Log in to your account</Title>
+          <Paragraph type='secondary'>Welcome back! please enter your details</Paragraph>
         </div>
         <Form layout='vertical' form={form} onFinish={handleLogin} disabled={isLoading} size='large'>
         <Form.Item name={'email'} label='Email' rules={
@@ -43,13 +46,13 @@ const Login = () => {
       </Form>
       <div className='row'>
         <div className='col'>
-          <Checkbox checked={isRemembered} onChange={(val) => setIsRemembered(val.target.checked)}>Remember</Checkbox>
+          <Checkbox checked={isRemembered} onChange={(val) => setIsRemembered(val.target.checked)}>Remember for 30 days</Checkbox>
         </div>
         <div className='col text-right'>
           <Link to={'/'}>Forgot password</Link>
         </div>
       </div>
-      <div className='mt-4'>
+      <div className='mt-4 mb-3'>
           <Button onClick={() => form.submit()}
             type='primary'
             style={{
@@ -60,9 +63,17 @@ const Login = () => {
             Login
           </Button>
       </div>
+      <SocialLogin></SocialLogin>
+      <div className='mt-4 text-center'>
+            <Space>
+              <Text>
+                Don't have an account? <Link to={'/sign-up'}>Sign up</Link>
+              </Text>
+            </Space>
+      </div>
       </Card>
 
-    </div>
+    </>
   )
 }
 

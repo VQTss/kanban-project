@@ -5,7 +5,7 @@ import { Login, SignUp } from '../screens/index'
 
 function AuthRouter() {
   return (
-    <div className="container">
+    <div className="container-fuild">
       <div className="row">
         <div className="col ">
           <h1>faaaaa</h1>
@@ -14,7 +14,7 @@ function AuthRouter() {
           <BrowserRouter>
             <Routes>
               <Route>
-                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/sign-up" element={<SignUp />} />
               </Route>
             </Routes>
